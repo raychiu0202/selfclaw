@@ -624,7 +624,7 @@
 
 ## 📞 联系方式
 
-- **项目地址：** /Users/ray/Documents/projects/glm-session
+- **项目地址：** /Users/ray/Documents/projects/selfclaw/selfclaw
 - **后端地址：** http://localhost:8000
 - **前端地址：** http://localhost:5173
 - **API文档：** http://localhost:8000/docs

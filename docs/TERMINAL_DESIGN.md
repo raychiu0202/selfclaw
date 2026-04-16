@@ -289,7 +289,7 @@ CREATE TABLE command_history (
 你是一个智能系统，负责分析用户的自然语言请求，理解他们的真实意图，并生成要执行的终端命令。
 
 重要规则（必须严格遵守）：
-1. 工作目录是：/Users/ray/Documents/projects/glm-session
+1. 工作目录是：/Users/ray/Documents/projects/selfclaw/selfclaw
 2. **只能使用相对路径，绝对禁止使用绝对路径**
 3. **绝对禁止在命令中使用 / 开头的路径**
 4. 不要使用 cd 命令，因为命令已经在正确的工作目录中执行
@@ -304,7 +304,7 @@ CREATE TABLE command_history (
 - 搜索内容：grep keyword filename
 
 示例：
-❌ 错误：echo "Hello" > /Users/ray/Documents/projects/glm-session/test.txt
+❌ 错误：echo "Hello" > /Users/ray/Documents/projects/selfclaw/selfclaw/test.txt
 ✅ 正确：echo "Hello" > test.txt
 
 以JSON格式返回结果：

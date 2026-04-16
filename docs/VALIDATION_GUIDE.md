@@ -20,7 +20,7 @@ python main.py
 
 **预期输出：**
 ```
-INFO - terminal - 终端服务初始化，工作目录: /Users/ray/Documents/projects/glm-session
+INFO - terminal - 终端服务初始化，工作目录: /Users/ray/Documents/projects/selfclaw/selfclaw
 INFO - Started server process [XXXX]
 INFO - Waiting for application startup.
 INFO - Application startup complete.
@@ -62,10 +62,10 @@ INFO - services - 已yield命令开始消息
 INFO - services - 执行命令: touch test.txt
 INFO - terminal - 开始执行命令: 'touch test.txt', conversation_id=1, timeout=10
 INFO - terminal - 命令安全验证通过
-INFO - terminal - 命令执行前，当前工作目录: /Users/ray/Documents/projects/glm-session
-INFO - terminal - 命令执行后，工作目录: /Users/ray/Documents/projects/glm-session
+INFO - terminal - 命令执行前，当前工作目录: /Users/ray/Documents/projects/selfclaw/selfclaw
+INFO - terminal - 命令执行后，工作目录: /Users/ray/Documents/projects/selfclaw/selfclaw
 INFO - terminal - 命令执行完成: exit_code=0, success=True, execution_time=0.023s
-INFO - terminal - 文件创建验证: test.txt - 存在: True, 路径: /Users/ray/Documents/projects/glm-session/test.txt
+INFO - terminal - 文件创建验证: test.txt - 存在: True, 路径: /Users/ray/Documents/projects/selfclaw/selfclaw/test.txt
 INFO - terminal - 文件信息: 大小=0字节
 INFO - services - 准备yield命令成功消息: touch test.txt
 INFO - services - 已yield命令成功消息

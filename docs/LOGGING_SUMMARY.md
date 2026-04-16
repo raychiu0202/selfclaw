@@ -50,7 +50,7 @@ console.warn('JSON解析失败，跳过该行:', dataStr, e);
 ### 1. 服务启动日志
 
 ```log
-2026-04-16 14:16:24,740 - terminal - INFO - 终端服务初始化，工作目录: /Users/ray/Documents/projects/glm-session
+2026-04-16 14:16:24,740 - terminal - INFO - 终端服务初始化，工作目录: /Users/ray/Documents/projects/selfclaw/selfclaw
 INFO - Started server process [11506]
 INFO - Waiting for application startup.
 INFO - Application startup complete.
@@ -62,7 +62,7 @@ INFO - Uvicorn running on http://0.0.0.0:8000
 ### 2. 用户消息接收日志
 
 ```log
-2026-04-16 14:10:36,287 - services - INFO - 收到用户消息: conversation_id=20, content='看下这个目录下有啥 /Users/ray/Documents/projects/glm-session/test_dir/test_subdir，另外在这个目录下建一个名为"测试01.md"的文件并写入"哈哈哈呵呵呵"。'
+2026-04-16 14:10:36,287 - services - INFO - 收到用户消息: conversation_id=20, content='看下这个目录下有啥 /Users/ray/Documents/projects/selfclaw/selfclaw/test_dir/test_subdir，另外在这个目录下建一个名为"测试01.md"的文件并写入"哈哈哈呵呵呵"。'
 ```
 
 **说明：** 记录每次用户输入和对话ID
@@ -91,7 +91,7 @@ INFO - Uvicorn running on http://0.0.0.0:8000
 ### 5. 文件创建验证日志
 
 ```log
-2026-04-16 14:10:39,383 - terminal - INFO - 文件创建验证: test_dir/test_subdir/测试01.md - 存在: True, 路径: /Users/ray/Documents/projects/glm-session/test_dir/test_subdir/测试01.md
+2026-04-16 14:10:39,383 - terminal - INFO - 文件创建验证: test_dir/test_subdir/测试01.md - 存在: True, 路径: /Users/ray/Documents/projects/selfclaw/selfclaw/test_dir/test_subdir/测试01.md
 2026-04-16 14:10:39,383 - terminal - INFO - 文件信息: 大小=19字节
 ```
 
