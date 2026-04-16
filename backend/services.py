@@ -160,20 +160,21 @@ class ChatService:
 - 列出文件列表
 - 搜索文件内容
 
-工作目录：/Users/ray/Documents/projects/glm-session
+重要规则：
+1. 工作目录是：/Users/ray/Documents/projects/selfclaw/selfclaw
+2. 你只能操作工作目录及其子目录下的文件
+3. 如果用户询问其他目录（如 /Users/ray/Documents/projects），请明确告知你只能访问当前工作目录
+4. 当用户说"看下当前目录"或"列出文件"时，执行 ls -la 命令
+5. 当执行了文件操作命令后，你的回复必须包含以下信息：
+   - 执行了什么操作（创建文件/删除文件/列出文件等）
+   - 操作的目标（文件名/目录名等）
+   - 操作的结果（成功/失败及详细信息）
 
-重要：当执行了文件操作命令后，你的回复必须包含以下信息：
-1. 执行了什么操作（创建文件/删除文件/列出文件等）
-2. 操作的目标（文件名/目录名等）
-3. 操作的结果（成功/失败及详细信息）
-4. 如果创建了文件，使用代码块显示文件信息，例如：`文件：test.md`
-
-例如：
+示例：
 - 创建文件："已成功创建文件 test.md"
-- 列出文件："当前目录的文件列表如下：\n```\n文件1.md\n文件2.txt\n```"
+- 列出文件："当前工作目录 /Users/ray/Documents/projects/selfclaw/selfclaw 的文件列表如下：\n```\n文件1.md\n文件2.txt\n```"
 - 查看文件："文件 test.md 的内容如下：\n```\n文件内容\n```"
-
-这样用户就能清楚地知道操作是否成功以及具体的文件信息。
+- 用户询问其他目录："抱歉，我只能访问当前工作目录 /Users/ray/Documents/projects/selfclaw/selfclaw 及其子目录。您可以指定工作目录内的文件或子目录。"
 
 如果用户只是问问题或聊天，不需要执行命令，直接回答即可。"""
 
@@ -184,7 +185,7 @@ class ChatService:
 用户请求：{user_content}
 
 重要规则（必须严格遵守）：
-1. 工作目录是：/Users/ray/Documents/projects/glm-session
+1. 工作目录是：/Users/ray/Documents/projects/selfclaw/selfclaw
 2. **只能使用相对路径，绝对禁止使用绝对路径**
 3. **绝对禁止在命令中使用 / 开头的路径**
 4. 不要使用 cd 命令，因为命令已经在正确的工作目录中执行
@@ -199,7 +200,7 @@ class ChatService:
 - 搜索内容：grep keyword filename
 
 示例：
-❌ 错误：echo "Hello" > /Users/ray/Documents/projects/glm-session/test.txt
+❌ 错误：echo "Hello" > /Users/ray/Documents/projects/selfclaw/selfclaw/test.txt
 ✅ 正确：echo "Hello" > test.txt
 
 ❌ 错误：touch /absolute/path/to/file.txt
@@ -286,11 +287,13 @@ class ChatService:
 用户请求：{user_content}
 
 重要规则（必须严格遵守）：
-1. 工作目录是：/Users/ray/Documents/projects/glm-session
-2. **只能使用相对路径，绝对禁止使用绝对路径**
-3. **绝对禁止在命令中使用 / 开头的路径**
-4. 不要使用 cd 命令，因为命令已经在正确的工作目录中执行
-5. 所有文件名都应该是简单的相对路径，如：test.md, filename.txt, data/
+1. 工作目录是：/Users/ray/Documents/projects/selfclaw/selfclaw
+2. 用户想要"看下目录"、"查看文件"、"列出文件"时，应该执行 ls -la 命令
+3. 即使提到其他路径（如 /Users/ray/Documents/projects），也只执行查看当前目录的命令
+4. **只能使用相对路径，绝对禁止使用绝对路径**
+5. **绝对禁止在命令中使用 / 开头的路径**
+6. 不要使用 cd 命令，因为命令已经在正确的工作目录中执行
+7. 所有文件名都应该是简单的相对路径，如：test.md, filename.txt, data/
 
 请分析用户的请求，如果需要执行文件操作，生成相应的命令。可用命令包括：
 - 创建文件：echo "内容" > filename 或 touch filename
@@ -301,7 +304,14 @@ class ChatService:
 - 搜索内容：grep keyword filename
 
 示例：
-❌ 错误：echo "Hello" > /Users/ray/Documents/projects/glm-session/test.txt
+用户请求："看下/Users/ray/Documents/projects目录下有哪些文件？"
+正确理解：用户想查看目录内容，应该列出当前工作目录
+正确命令：["ls -la"]
+
+用户请求："创建一个test.txt文件"
+正确命令：["touch test.txt"]
+
+❌ 错误：echo "Hello" > /Users/ray/Documents/projects/selfclaw/selfclaw/test.txt
 ✅ 正确：echo "Hello" > test.txt
 
 ❌ 错误：touch /absolute/path/to/file.txt

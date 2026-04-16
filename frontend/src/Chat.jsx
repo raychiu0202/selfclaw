@@ -65,8 +65,10 @@ export default function Chat({ conversationId }) {
         userMessage,
         // onData: 收到数据
         (content) => {
+          console.log('收到数据:', content); // 添加调试日志
           // 处理命令状态消息
           if (content.type) {
+            console.log('处理命令状态:', content); // 添加调试日志
             setCommandStatus(prev => [...prev, {
               type: content.type,
               command: content.command,
@@ -76,6 +78,7 @@ export default function Chat({ conversationId }) {
               timestamp: new Date()
             }]);
           } else if (content.content) {
+            console.log('处理聊天内容:', content.content); // 添加调试日志
             // 处理普通的聊天内容
             // 检查是否需要替换内容
             if (content.replace) {
@@ -94,6 +97,18 @@ export default function Chat({ conversationId }) {
         },
         // onComplete: 完成
         () => {
+          console.log('流式传输完成'); // 添加调试日志
+          console.log('最终流式消息:', streamingMessage); // 添加调试日志
+          console.log('是否需要替换:', needReplace); // 添加调试日志
+          // 将流式消息添加到消息列表，避免内容消失
+          if (streamingMessage.trim()) {
+            console.log('添加AI回复到消息列表'); // 添加调试日志
+            setMessages(prev => [...prev, {
+              role: 'assistant',
+              content: streamingMessage,
+              id: Date.now()
+            }]);
+          }
           // 如果需要替换，重新加载消息以获取完整的历史
           if (needReplace) {
             loadMessages();
