@@ -1,0 +1,25 @@
+# Selfclaw Python Package Requirements
+# 精简依赖，确保最小包体积
+
+# Web框架
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+
+# 数据库
+sqlalchemy>=2.0.0
+pymysql>=1.1.0
+
+# 安全
+cryptography>=41.0.0
+
+# 配置
+python-dotenv>=1.0.0
+
+# AI模型
+zhipuai>=2.0.0
+
+# CLI
+click>=8.1.0
+
+# 配置文件解析
+pyyaml>=6.0

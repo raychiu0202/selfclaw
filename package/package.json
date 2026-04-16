@@ -1,0 +1,58 @@
+{
+  "name": "selfclaw",
+  "version": "1.0.0",
+  "description": "Selfclaw - AI Agent System based on GLM-5",
+  "main": "index.js",
+  "bin": {
+    "selfclaw": "./bin/selfclaw.js"
+  },
+  "scripts": {
+    "start": "node bin/selfclaw.js start",
+    "init": "node bin/selfclaw.js init",
+    "stop": "node bin/selfclaw.js stop",
+    "status": "node bin/selfclaw.js status",
+    "config": "node bin/selfclaw.js config",
+    "clean": "node bin/selfclaw.js clean",
+    "logs": "node bin/selfclaw.js logs",
+    "test": "node bin/selfclaw.js test"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "chatbot",
+    "llm",
+    "glm",
+    "terminal",
+    "automation"
+  ],
+  "author": "raychiu0202",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raychiu0202/selfclaw.git"
+  },
+  "bugs": {
+    "url": "https://github.com/raychiu0202/selfclaw/issues"
+  },
+  "homepage": "https://github.com/raychiu0202/selfclaw#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "templates"
+  ],
+  "dependencies": {
+    "commander": "^11.1.0",
+    "chalk": "^4.1.2",
+    "inquirer": "^8.2.5",
+    "yaml": "^2.3.4"
+  },
+  "devDependencies": {},
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ]
+}

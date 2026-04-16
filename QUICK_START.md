@@ -2,6 +2,22 @@
 
 ## 🚀 快速启动
 
+### 方式一：一键安装（推荐）
+
+#### 使用 npm 安装
+```bash
+npm install -g selfclaw
+selfclaw --help
+```
+
+#### 使用 pip 安装
+```bash
+pip install selfclaw
+selfclaw --help
+```
+
+### 方式二：从源码安装
+
 ### 前置要求
 - Python 3.14+
 - Node.js 18+
@@ -9,7 +25,25 @@
 
 ### 1. 环境准备
 
-#### 1.1 数据库配置
+#### 1.1 配置向导（一键安装）
+
+使用包管理器安装后，可以运行配置向导：
+
+```bash
+# NPM安装后
+selfclaw init
+
+# pip安装后
+selfclaw init
+```
+
+配置向导将引导你完成：
+- GLM API密钥配置
+- 数据库连接配置
+- 服务端口配置
+- 安全设置配置
+
+### 1.2 数据库配置（从源码安装）
 
 ```bash
 # 启动MySQL服务
@@ -24,7 +58,7 @@ CREATE DATABASE selfclaw CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 exit;
 ```
 
-#### 1.2 后端环境配置
+#### 1.3 后端环境配置（从源码安装）
 
 ```bash
 cd backend
@@ -56,7 +90,7 @@ GLM_MODEL=glm-5
 3. 在控制台创建API密钥
 4. 复制API密钥到 `.env` 文件
 
-#### 1.3 安装依赖
+#### 1.4 安装依赖（从源码安装）
 
 ```bash
 # 激活虚拟环境
@@ -68,7 +102,23 @@ pip install -r requirements.txt
 
 ### 2. 启动服务
 
-#### 2.1 启动后端服务
+#### 2.1 使用包管理器启动（推荐）
+
+```bash
+# 启动Selfclaw服务
+selfclaw start
+
+# 指定端口启动
+selfclaw start --port 8080
+
+# 查看服务状态
+selfclaw status
+
+# 停止服务
+selfclaw stop
+```
+
+#### 2.2 启动后端服务（从源码）
 
 ```bash
 cd backend
@@ -87,7 +137,7 @@ open http://localhost:8000/docs
 curl http://localhost:8000/
 ```
 
-#### 2.2 启动前端服务
+#### 2.3 启动前端服务（从源码）
 
 ```bash
 # 新开一个终端窗口
@@ -101,6 +151,17 @@ npm run dev
 ```
 
 **前端服务运行在：** http://localhost:5173
+
+#### 2.4 包管理器服务配置
+
+```bash
+# 使用默认配置启动
+selfclaw start
+
+# 前端界面: http://localhost:5173
+# 后端API: http://localhost:8000
+# API文档: http://localhost:8000/docs
+```
 
 ### 3. 访问应用
 
@@ -425,6 +486,61 @@ cat backend/.env | grep GLM_API_KEY
 
 # 重新获取API密钥
 # 访问 https://open.bigmodel.cn/
+```
+
+## 🖥️ CLI命令参考
+
+### 基本命令
+
+```bash
+# 查看帮助
+selfclaw --help
+
+# 查看版本
+selfclaw --version
+
+# 初始化配置
+selfclaw init
+
+# 启动服务
+selfclaw start
+
+# 停止服务
+selfclaw stop
+
+# 查看服务状态
+selfclaw status
+
+# 配置API密钥
+selfclaw config --api-key your_key
+
+# 配置数据库
+selfclaw config --db-host localhost --db-user root --db-password pass
+
+# 清理数据
+selfclaw clean
+
+# 查看日志
+selfclaw logs
+```
+
+### 高级命令
+
+```bash
+# 使用自定义配置文件启动
+selfclaw start --config /path/to/config.yaml
+
+# 指定端口启动
+selfclaw start --port 8080
+
+# 开启调试模式
+selfclaw start --debug
+
+# 查看详细的API日志
+selfclaw logs --level debug
+
+# 导出配置
+selfclaw config export
 ```
 
 ## 📖 更多文档

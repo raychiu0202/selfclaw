@@ -422,7 +422,44 @@ Response:
 
 ## 7. 部署规格
 
-### 7.1 开发环境
+### 7.1 包管理器安装（推荐）
+
+#### 7.1.1 NPM安装
+
+```bash
+npm install -g selfclaw
+selfclaw --help
+```
+
+**包名：** selfclaw
+**发布平台：** npmjs.com
+**CLI命令：** selfclaw
+
+#### 7.1.2 pip安装
+
+```bash
+pip install selfclaw
+selfclaw --help
+```
+
+**包名：** selfclaw
+**发布平台：** pypi.org
+**CLI命令：** selfclaw
+
+#### 7.1.3 安装后配置
+
+```bash
+# 初始化配置
+selfclaw init
+
+# 配置API密钥
+selfclaw config --api-key your_glm_api_key_here
+
+# 启动服务
+selfclaw start
+```
+
+### 7.2 开发环境
 
 **后端：**
 ```bash
@@ -454,6 +491,65 @@ npm run dev
 - 启用HTTPS
 - 配置CDN
 
+**包发布规格：**
+
+**NPM包规格：**
+```json
+{
+  "name": "selfclaw",
+  "version": "1.0.0",
+  "description": "AI Agent system based on GLM-5",
+  "main": "index.js",
+  "bin": {
+    "selfclaw": "./bin/selfclaw"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "scripts": {
+    "start": "node bin/selfclaw.js"
+  }
+}
+```
+
+**Python包规格：**
+```python
+from setuptools import setup, find_packages
+
+setup(
+    name="selfclaw",
+    version="1.0.0",
+    description="AI Agent system based on GLM-5",
+    packages=find_packages(),
+    install_requires=[
+        "fastapi>=0.104.0",
+        "uvicorn>=0.24.0",
+        "mysql-connector-python>=8.0.0",
+        "python-multipart>=0.0.6",
+        "pydantic>=2.0.0",
+        "httpx>=0.25.0"
+    ],
+    entry_points={
+        "console_scripts": [
+            "selfclaw=selfclaw.cli:main"
+        ]
+    }
+)
+```
+
+**后端配置：**
+- 使用Gunicorn或Uvicorn生产服务器
+- 配置环境变量
+- 启用HTTPS
+- 配置日志和监控
+
+**前端配置：**
+- 构建静态文件：`npm run build`
+- 配置Nginx或其他Web服务器
+- 启用HTTPS
+- 配置CDN
+
 ---
 
 ## 8. 扩展规格
@@ -468,6 +564,10 @@ npm run dev
 - [ ] 插件系统
 - [ ] 多用户支持
 - [ ] 权限管理
+- [ ] NPM包发布
+- [ ] PyPI包发布
+- [ ] Docker容器化
+- [ ] 一键安装脚本
 
 ### 8.2 性能扩展
 
@@ -493,6 +593,7 @@ npm run dev
 |------|------|------|
 | 1.0.0 | 2024-01-01 | 初始版本，核心功能完成 |
 | 1.1.0 | 2026-04-16 | 新增动态命令执行显示，修复回复闪现问题 |
+| 2.0.0 | 2026-04-16 | 添加包发布规格，支持npm和pip一键安装 |
 
 ---
 

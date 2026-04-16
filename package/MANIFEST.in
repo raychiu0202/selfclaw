@@ -1,0 +1,13 @@
+include README.md
+include LICENSE
+include requirements.txt
+recursive-include selfclaw *.py *.yaml *.yml *.json *.txt
+exclude *.pyc
+exclude __pycache__
+exclude .git*
+exclude .DS_Store
+exclude .pytest_cache
+exclude venv
+exclude node_modules
+exclude *.so
+exclude *.egg-info

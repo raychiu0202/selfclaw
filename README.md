@@ -4,12 +4,26 @@
 
 ## 🚀 快速开始
 
-### 前置要求
+### 一键安装（推荐）
+
+#### 使用 npm 安装
+```bash
+npm install -g selfclaw
+```
+
+#### 使用 pip 安装
+```bash
+pip install selfclaw
+```
+
+### 从源码安装
+
+#### 前置要求
 - Python 3.14+
 - Node.js 18+
 - MySQL 8.0+
 
-### 安装步骤
+#### 安装步骤
 
 1. **后端设置**
 ```bash
@@ -44,6 +58,9 @@ selfclaw/
 │   └── clean_database.py  # 数据库清理工具
 ├── frontend/         # 前端应用
 │   └── src/          # React组件
+├── package/          # 发布包配置
+│   ├── setup.py      # Python包配置
+│   └── package.json  # NPM包配置
 ├── docs/             # 项目文档
 │   ├── README.md     # 详细项目说明
 │   ├── SDD.md        # 软件设计文档
@@ -135,6 +152,9 @@ python clean_database.py
 - [x] 安全验证系统
 - [x] 动态命令显示
 - [x] 用户界面优化
+- [ ] NPM包发布
+- [ ] PyPI包发布
+- [ ] Docker容器化
 - [ ] 高级文件操作
 - [ ] 多用户支持
 - [ ] 权限管理
